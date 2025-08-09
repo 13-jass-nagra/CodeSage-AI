@@ -83,10 +83,11 @@ import { streamText } from 'ai' // 82.9k (gzipped: 22.2k)
 import { createStreamableValue } from 'ai/rsc' // 302 (gzipped: 204)
 import { createGoogleGenerativeAI } from '@ai-sdk/google' // 24.7k (gzipped: 302)
 import { generateEmbedding } from '@/lib/gemini'
+// import { generateEmbedding } from '@/lib/openai'
 import { db } from '@/server/db'
 // import { generateEmbedding } from '@/lib/ollama'
 
-const google = createGoogleGenerativeAI({
+const google = createGoogleGenerativeAI({ 
   apiKey: process.env.GEMINI_API_KEY,
 })
 

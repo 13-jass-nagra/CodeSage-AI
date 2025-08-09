@@ -1,9 +1,11 @@
 import { GithubRepoLoader } from '@langchain/community/document_loaders/web/github'
 import { Document } from '@langchain/core/documents'
 import { summariseCode } from './gemini'
+// import { summariseCode } from './openai'
 // import { summariseCode } from './ollama'
 import { db } from '@/server/db'
 import { generateEmbedding } from './gemini'
+// import { generateEmbedding } from './openai'
 // import { generateEmbedding } from './ollama'
 
 export const loadGithubRepo = async (githubUrl: string, githubToken?: string) => {
@@ -13,7 +15,7 @@ export const loadGithubRepo = async (githubUrl: string, githubToken?: string) =>
     ignoreFiles: [
       'yarn.lock',
       'pnpm-lock.yaml',
-      'bun.lockb'
+      'bun.lockb' 
     ],
     recursive: true,
     unknown: 'warn',

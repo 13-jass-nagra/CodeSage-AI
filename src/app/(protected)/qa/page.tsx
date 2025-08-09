@@ -45,7 +45,7 @@ const QAPage = () => {
         </React.Fragment>
       })}
       </div>
-      {question && (
+      {/* {question && (
         <SheetContent className='sm:max-w-[80vw'>
           <SheetHeader>
             <SheetTitle>
@@ -55,7 +55,22 @@ const QAPage = () => {
             <CodeReferences fileReferences={(question.filesReferences ?? []) as any}/>
           </SheetHeader>
         </SheetContent>
-      )}
+      )} */}
+      {question && (
+  <SheetContent className='sm:max-w-[80vw] flex flex-col'>
+    <SheetHeader>
+      <SheetTitle>
+        {question.question}
+      </SheetTitle>
+    </SheetHeader>
+
+    <div className="flex-1 overflow-y-auto pr-2">
+      <MDEditor.Markdown source={question.answer} className="mb-4 max-h-[45vh] overflow-scroll max-w-9xl rounded-md " />
+      <CodeReferences fileReferences={(question.filesReferences ?? []) as any}/>
+    </div>
+  </SheetContent>
+)}
+
     </Sheet>
   )
 }

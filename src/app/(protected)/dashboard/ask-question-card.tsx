@@ -52,28 +52,39 @@ const AskQuestionCard = () => {
                     <DialogTitle>
                         <Image src='/codesageailogo.png' alt='CodeSage' width={40} height={40}/>
                     </DialogTitle>
-                    <Button disabled={saveAnswer.isPending} variant={'outline'} onClick={()=>{
-                        saveAnswer.mutate({
-                            projectId: project!.id,
-                            question,
-                            answer,
-                            filesReferences
-                        },{
-                            onSuccess:()=>{
-                                toast.success('Answer saved!')
-                                refetch()
-                            },
-                            onError:()=>{
-                                toast.error('Failed to save answer!')
-                            }
-                        })
-                    }}>
-                        Save Answer
-                    </Button>
+                    <Button
+  disabled={saveAnswer.isPending}
+  onClick={() => {
+    saveAnswer.mutate(
+      {
+        projectId: project!.id,
+        question,
+        answer,
+        filesReferences,
+      },
+      {
+        onSuccess: () => {
+          toast.success('Answer saved!');
+          refetch();
+        },
+        onError: () => {
+          toast.error('Failed to save answer!');
+        },
+      }
+    );
+  }}
+  className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+             hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 
+             text-white font-bold py-2 rounded-xl shadow-md 
+             hover:shadow-lg transition-all duration-300 ease-in-out"
+>
+  Save Answer
+</Button>
+
                     </div>
                 </DialogHeader>
 
-                <MDEditor.Markdown source={answer} className='max-w-[70vw] !h-full max-h-[40vh] overflow-scroll'/>
+                <MDEditor.Markdown source={answer} className='max-w-[80vw] !h-full max-h-[30vh] overflow-scroll'/>
                 <div className='h-4'></div>
                 <CodeReferences fileReferences={filesReferences}/>
 
